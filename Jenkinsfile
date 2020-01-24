@@ -25,7 +25,7 @@ pipeline {
               dir('dev/ansible')
               {
                
-              sh 'ansible all -m ping -i hostfile'
+              sh 'ansible -m ping -i hostfile'
                
             }
             }

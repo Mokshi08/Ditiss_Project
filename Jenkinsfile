@@ -22,10 +22,10 @@ pipeline {
              
                steps {
                  
-              dir('dev/ansible')
+              dir('/etc/ansible')
               {
                
-              sh 'ansible -m ping -i hostfile'
+              sh 'ansible-playbook initial_step.yaml -i hostfile -K'
                
             }
             }
@@ -34,4 +34,13 @@ pipeline {
 }
 
 ansible-playbook(credentialsId: 'lynis' , inventory: 'hostfile' , playbook: 'initial_step.yaml')
+
+
+ansiColor('xterm') {
+    ansiblePlaybook(
+        playbook: 'initial_step.yaml',
+        inventory: 'hostfile',
+        credentialsId: 'lynis',
+        colorized: true)
+}
 

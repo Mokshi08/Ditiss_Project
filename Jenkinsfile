@@ -3,8 +3,7 @@ pipeline {
              stages {
                     stage('checkout') {
                     steps {
-             
-                    git branch: 'develop', url: 'yoururl'
+                            git branch: 'master', url: 'https://github.com/Mokshi08/Ditiss_Project.git'
              
           }
         }
@@ -19,27 +18,18 @@ pipeline {
                     input('Do you want to proceed?')
                  }
                  }
-                 stage('Deploy') {
-                 parallel {
-                            stage('Deploy start ') {
-                           steps {
-                                echo "Start the deploy .."
-                           }
-                           }
-                            stage('Deploying now') {
-                            agent {
-                                    docker {
-                                            reuseNode true
-                                            image ‘HardenedSystem’
-                                           }
-                                    }
-
-                              steps {
-                                echo "Docker Created"
-                              }
-                           }
-                           }
-                           }
+                stage('Ansible Deploy') {
+             
+               steps {
+                 
+              dir('dev/ansible')
+              {
+               
+              sh 'ansible all -m ping -i hosts'
+               
+            }
+            }
+        }
 }
 }
 

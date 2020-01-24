@@ -22,7 +22,7 @@ pipeline {
              
                steps {
                  
-              dir('/etc/ansible')
+              dir('dev/ansible')
               {
                
               sh 'ansible-playbook initial_step.yaml -i hostfile -K'

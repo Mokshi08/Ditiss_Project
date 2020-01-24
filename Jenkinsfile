@@ -34,3 +34,5 @@ pipeline {
                            }
 }
 }
+
+ansible-playbook(credentialsId: 'lynis' , inventory: 'hostfile' , playbook: 'initial_step.yaml')

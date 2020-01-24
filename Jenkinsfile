@@ -7,7 +7,7 @@ pipeline {
              
           }
         }
-         stages {
+       
                  stage('Build') {
                  steps {
                      echo 'Hi, Building the code'
@@ -34,4 +34,4 @@ pipeline {
 }
 
 ansible-playbook(credentialsId: 'lynis' , inventory: 'hostfile' , playbook: 'initial_step.yaml')
-}
+

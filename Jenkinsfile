@@ -1,5 +1,13 @@
 pipeline {
          agent any
+             stages {
+                    stage('checkout') {
+                    steps {
+             
+                    git branch: 'develop', url: 'yoururl'
+             
+          }
+        }
          stages {
                  stage('Build') {
                  steps {

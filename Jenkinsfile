@@ -20,27 +20,18 @@ pipeline {
                  }
                 stage('Ansible Deploy') {
              
-               steps {
-                 
-              dir('dev/ansible')
-              {
-               
-              sh 'ansible-playbook initial_step.yaml -i hostfile -K'
-               
-            }
+                 sshagent (credentials: ['lynis']) {
+                ansiblePlaybook(
+                    credentialsId: lynis',
+                    inventory: 'hostfile',
+                    installation: 'name of the tool specified on the configuration tool screen',
+                    limit: '192.168.5.145',
+                    playbook: 'initial_step.yaml',
+                    
+                )
             }
         }
 }
 }
 
-ansible-playbook(credentialsId: 'lynis' , inventory: 'hostfile' , playbook: 'initial_step.yaml')
-
-
-ansiColor('xterm') {
-    ansiblePlaybook(
-        playbook: 'initial_step.yaml',
-        inventory: 'hostfile',
-        credentialsId: 'lynis',
-        colorized: true)
-}
 

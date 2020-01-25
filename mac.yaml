@@ -5,21 +5,18 @@
   #become: yes
   tasks:
    - name: Ensure SELinux is not disabled in bootloader configuration
-     become: yes
      replace:
        path: '/etc/default/grub'
        regexp: '(GRUB_CMDLINE_LINUX).*' 
        replace: '\1=""'
    
    - name: Ensure address space layout randomization(ASLR) is enabled
-     become: yes
      lineinfile:
        path: '/etc/default/grub'
        insertbefore: EOF
        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet"'
 
    - name: Updating the grub2 configuration
-     become: yes
      shell:
        cmd: grub2-mkconfig > /boot/grub2/grub.cfg
 

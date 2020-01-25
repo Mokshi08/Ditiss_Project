@@ -89,7 +89,7 @@
        regexp: '^#(auth\s*.*pam_wheel.so\s.*)'
        replace: '\1'
 
-   - name: Add root user to wheel group
-     shell:
-       cmd: usermod -G wheel root
+   #- name: Add root user to wheel group
+    # shell:
+      # cmd: usermod -G wheel root
 

@@ -1,7 +1,8 @@
 ---
 - hosts: all
   #become: true
-  remote_user: root
+  become_user: root
+  become: yes
   tasks:
    - name: Ensure SELinux is not disabled in bootloader configuration
      become: yes

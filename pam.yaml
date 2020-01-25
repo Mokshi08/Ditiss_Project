@@ -72,9 +72,9 @@
     # shell:
     #   cmd: useradd -D -f 30
 
-   - name: Set root gid 0
-     shell:
-       cmd: usermod -g 0 root
+   #- name: Set root gid 0
+    # shell:
+     #  cmd: usermod -g 0 root
 
    - name: Set umask to 027 
      replace:

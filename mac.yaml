@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  sudo: yes
   #become: true
   become_user: root
   become: yes

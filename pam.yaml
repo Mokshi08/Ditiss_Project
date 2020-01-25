@@ -68,9 +68,9 @@
        regexp: '^PASS_WARN_AGE\s+\d+'
        replace: 'PASS_WARN_AGE	7'
 
-   - name: Set inactive password lock to 30 days 
-     shell:
-       cmd: useradd -D -f 30
+   #- name: Set inactive password lock to 30 days 
+    # shell:
+    #   cmd: useradd -D -f 30
 
    - name: Set root gid 0
      shell:

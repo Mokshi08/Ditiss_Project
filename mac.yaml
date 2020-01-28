@@ -1,7 +1,6 @@
 ---
 - hosts: all
   become: true
-  user: lynis
   remote_user: lynis
   #become: yes
   tasks:

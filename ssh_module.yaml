@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  user: lynis
   gather_facts: True
   tasks:
    - name: Copy file of ssh module to the client machine

@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  user: lynis
   #become_user: root
   #become: yes
   tasks:

@@ -1,0 +1,48 @@
+---
+- hosts: webserver
+  become: true
+  gather_facts: True
+  tasks:
+    - name: Ansible create file if it doesn't exist example
+      file:
+	path: "/etc/modprobe.d/CIS.conf"
+        state: touch
+
+    - name: Check for SHA512 password storage in PAM
+      blockinfile:
+        path:  "/etc/modprobe.d/CIS.conf"
+        insertafter: ''
+        block:  |
+          install freevxfs /bin/true
+          install jffs2 /bin/true
+          install hfs /bin/true
+          install hfsplus /bin/true
+          install squashfs /bin/true
+          install udf /bin/true
+          install vfat /bin/true
+        state: present
+    - name: Change permission of tmp file
+      mount:
+	      path: /tmp
+        src: tmps
+        opts: rw,nosuid,nodev,noexec,relatime,seclabel
+        fstype: tmpfs
+        state: present
+
+    - name: Ensure mounting of cramfs filesystems is disabled (Scored)
+      file: path=/etc/modprobe.d/CIS.conf state=touch owner=root group=root mode=0600
+
+    - name: Cramfs files
+      lineinfile: >
+        state=pre
+        dest=/etc/modprobe.d/CIS.conf
+        line="install cramfs /bin/true"
+
+    - name: Ensure gpgcheck is globally activated
+      lineinfile:
+        path: /etc/yum.conf
+        backup: yes
+        regex: '^gpgcheck '
+        insertafter: 'obsoletes=1'
+        line: 'gpgcheck=1'
+  

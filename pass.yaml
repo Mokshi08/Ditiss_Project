@@ -23,7 +23,7 @@
         state: present
     - name: Change permission of tmp file
       mount:
-	      path: /tmp
+	path: /tmp
         src: tmps
         opts: rw,nosuid,nodev,noexec,relatime,seclabel
         fstype: tmpfs

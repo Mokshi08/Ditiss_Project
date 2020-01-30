@@ -5,7 +5,7 @@
   tasks:
     - name: Ansible create file if it doesn't exist example
       file:
-	path: "/etc/modprobe.d/CIS.conf"
+        path: "/etc/modprobe.d/CIS.conf"
         state: touch
 
     - name: Check for SHA512 password storage in PAM
@@ -23,7 +23,7 @@
         state: present
     - name: Change permission of tmp file
       mount:
-	path: /tmp
+        path: /tmp
         src: tmps
         opts: rw,nosuid,nodev,noexec,relatime,seclabel
         fstype: tmpfs

@@ -34,7 +34,7 @@
 
     - name: Cramfs files
       lineinfile: >
-        state=pre
+        state=present
         dest=/etc/modprobe.d/CIS.conf
         line="install cramfs /bin/true"
 
